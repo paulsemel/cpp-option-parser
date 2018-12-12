@@ -5,7 +5,10 @@
 
 static Option<bool> Distinct("distinct", "number of distinct queries", OptionType::Command);
 static Option<bool> Help("--help", "display the help message", OptionType::Command);
-static Option<std::string> Lol("lol", "useless option", OptionType::Opt);
+
+static Option<int> Another("another", "this is another command", OptionType::Command);
+
+static Option<std::string> Lol("--lol", "useless option", OptionType::Opt);
 static Option<std::string> File("File", "the file to give", OptionType::Positional, position::End);
 
 void handleOptions(void) {
