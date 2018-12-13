@@ -16,6 +16,16 @@ void BasicOption::toHelpRepr(void) {
 	printf("%-20s - %s\n", Name.data(), Desc.data());
 }
 
+// Option<Alias>
+
+Option<Alias>::Option(const char *Name, const char *Description, BasicOption *alias)
+	: BasicOption(Name, Description, alias->Type, NoPosition), Alias(alias) {}
+
+void Option<Alias>::isPresent(void) {
+	BasicOption::isPresent();
+	Alias->isPresent();
+};
+
 // Option<bool>
 
 Option<bool>::Option(const char *Name, const char *Description,

@@ -11,6 +11,8 @@ static Option<int> Another("another", "this is another command", OptionType::Com
 static Option<std::string> Lol("--lol", "useless option", OptionType::Opt);
 static Option<std::string> File("File", "the file to give", OptionType::Positional, position::End);
 
+static Option<Alias> Toto("-l", "sdkfjllsd", &Lol);
+
 void handleOptions(void) {
 	if (Help) {
 		help();

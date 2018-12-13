@@ -35,6 +35,21 @@ class BasicOption {
 template <class T>
 class Option;
 
+struct Alias {
+};
+
+template<>
+class Option<Alias> : public BasicOption {
+	private:
+		BasicOption *Alias;
+	public:
+		Option(const char *Name, const char *Description, BasicOption *alias);
+		Option(const Option &) = delete;
+		void isPresent(void);
+		bool hasArg(void) { return Alias->hasArg(); };
+		void addArgument(const std::string_view Arg) { Alias->addArgument(Arg); };
+};
+
 template <>
 class Option<bool> : public BasicOption {
 	public:
